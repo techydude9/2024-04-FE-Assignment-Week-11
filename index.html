@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bob Ruzga Coding Assignment wk 10</title>
+    <title>Bob Ruzga Coding Assignment wk 11</title>
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/wk11TicTacToe.css">
@@ -27,9 +27,38 @@
       </script>
       <!--    End of opening scripts -->
 
-    
+      <!--- Main HTML code -->
+      <div class="container-lg">
+        <h1 id="mainH1" class="text-center border border-dark border-2 rounded-2"> Week 11 - Bob Ruzga Tic Tac Toe Game</h1>
+      </div>
 
-  
+      <!-- Get the Players and assign X -->
+       <div class="container-fluid card">
+          <div class="card-body">
+          <form onclick="event.preventDefault();">
+            <label for="p1Name">Name for Player 1</label>
+            <input id="p1Name" type="text" placeholder="Player 1"/>
+            <br />
+            <label for="p2Name">Name for Player 2</label>
+            <input id="p2Name" type="text" placeholder="Player 2"/>
+            <br />
+            <label for="whoseX">Who is X? (1 or 2)</label>
+            <input id="whoseX" type="number" min="1" max="2" placeholder="0" />
+          </form>
+          <br>
+          <div class="text-center">
+            <button id="playersBtn" class="btn btn-info btn-sm text-center">Join Game</button>
+          </div>
+        </div>
+       </div>
+
+       <!--   New game started, two players named, and who has X is chosen 
+          LET's START THE GAME!!!! -->
+       <!---  Create Table to show players and count-->
+       
+       <!--  Create TicTacToe Table for game-->
+
+      <!-- End of Main HTML Code -->
       <!--- Ending Scripts Section  --> 
     <script src="./node_modules/jquery/dist/jquery.js"></script>
     <script src="/wk11TicTacToe.js"></script>
