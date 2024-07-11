@@ -2,3 +2,30 @@
     color:darkblue;
     background-color: limegreen;
 }
+
+#endThxP {
+    color: forestgreen;
+    background-color: bisque;
+    text-align: center;
+    font-weight: bold;
+    border: 3px;
+    border-style: groove;
+    border-color: black;
+    border-radius: 4px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+td {
+    text-align: center;
+}
+
+#sbBlank {
+    background-color: rgb(247, 247, 209);
+}
+
+#gameBoard {
+    margin-left: 35%;
+    height: 250px;
+    width: 250px;
+}

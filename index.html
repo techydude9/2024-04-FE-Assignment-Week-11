@@ -48,16 +48,87 @@
           <br>
           <div class="text-center">
             <button id="playersBtn" class="btn btn-info btn-sm text-center">Join Game</button>
+            <button id="endGameBtn1" class="btn btn-warning btn-sm">End the Game</button>
           </div>
         </div>
        </div>
 
-       <!--   New game started, two players named, and who has X is chosen 
-          LET's START THE GAME!!!! -->
-       <!---  Create Table to show players and count-->
-       
-       <!--  Create TicTacToe Table for game-->
+       <br>
 
+       <table id="scoreBoard" class="table table-bordered">
+          <thead id="sbHead">
+            <tr>
+              <th id="th1Player" class="col-4"></th>
+              <th class="text-center bg-body-secondary">Welcome to the Game between:</th>
+              <th id="th2Player" class="col-4"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="sbNameRow">
+              <td id="p1SbName">Player 1</td>
+              <td id="sbBlank"></td>
+              <td id="p2SbName">Player 2</td>
+            </tr>
+            <tr id="sbXORow">
+              <td id="p1SbXO">X or O</td>
+              <td id="sbBlank"></td>
+              <td id="p2SbXO">X or O</td>
+            </tr>
+          </tbody>
+       </table>
+
+       <table id="gameBoard" class="table table-bordered table-secondary">
+        <thead>
+          <tr>
+            <th class="col-3 bg-info"></th>
+            <th class="col-3 text-center bg-info">Game Board</th>
+            <th class="col-3 bg-info"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="row1">
+            <td id="sq1">
+              <button id="sq1Btn" type="button" class="btn btn-light" onclick="sq1_Func(); playTurn()">Open</button>
+            </td> 
+            <td id="sq2">
+              <button id="sq2Btn" type="button" class="btn btn-light" onclick="sq2_Func(); playTurn()">Open</button>
+            </td>
+            <td id="sq3">
+              <button id="sq3Btn" type="button" class="btn btn-light" onclick="sq3_Func(); playTurn()">Open</button>
+            </td>
+          </tr>
+          <tr id="row2">
+            <td id="sq4">
+              <button id="sq4Btn" type="button" class="btn btn-light" onclick="sq4_Func(); playTurn()">Open</button>
+            </td>
+            <td id="sq5">
+              <button id="sq5Btn" type="button" class="btn btn-light" onclick="sq5_Func(); playTurn()">Open</button>
+            </td>
+            <td id="sq6">
+              <button id="sq6Btn" type="button" class="btn btn-light" onclick="sq6_Func(); playTurn()">Open</button>
+            </td>
+          </tr>
+          <tr id="row3">
+            <td id="sq7">
+              <button id="sq7Btn" type="button" class="btn btn-light" onclick="sq7_Func(); playTurn()">Open</button>
+            </td>
+            <td id="sq8">
+              <button id="sq8Btn" type="button" class="btn btn-light" onclick="sq8_Func(); playTurn()">Open</button>
+            </td>
+            <td id="sq9">
+              <button id="sq9Btn" type="button" class="btn btn-light" onclick="sq9_Func(); playTurn()">Open</button>
+            </td>
+          </tr>
+      </tbody>
+               </table>
+                
+        <div>
+          <br>
+            <div class="thanks4Play">
+            </div>
+        </div>
+
+      <br><br><hr>
       <!-- End of Main HTML Code -->
       <!--- Ending Scripts Section  --> 
     <script src="./node_modules/jquery/dist/jquery.js"></script>
