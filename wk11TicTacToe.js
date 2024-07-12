@@ -99,26 +99,26 @@ $("#endGameBtn1").on("click", function() {
 
 // End the Game button added on result DIV in HTML
 $("#endGameBtn2").on("click", function() {
-        $('.thanks4Play').append(`<p id="endThxP">Thanks for Playing</p>`);
-    console.log("ended the game");
-    return;
+    $('.thanks4Play').append(`<p id="endThxP">Thanks for Playing</p>`);
+console.log("ended the game2");
+return;
 })
 
 // Play again button added during end of game
 $('#playAgainBtn').on('click', function(){
-    location.reload();
-    /* $(document).ready(function() {
-        // Reset all forms on the page
-            $("form").each(function() {
-            this.reset();
-            })
-            $("table").each(function() {
-            this.reset();
-            })
-    }) */
+console.log('In Play Again Btn func');
+location.reload();
+/* $(document).ready(function() {
+    // Reset all forms on the page
+        $("form").each(function() {
+        this.reset();
+        })
+        $("table").each(function() {
+        this.reset();
+        })
+}) */
 })
-        
-
+    
 // Let's Play the Game Function
 function letsPlayTheGame() {
     console.log('In Playing the Game function');
@@ -141,8 +141,7 @@ function letsPlayTheGame() {
     }
 
     console.log(gameBrd);
-    }  // End of letsPlayTheGame Function
-
+    }  
 
 // playTurn function
 function playTurn() {
@@ -166,7 +165,7 @@ function playTurn() {
             (gameBrd[1] == "X" && gameBrd[4] == "X" && gameBrd [7] == "X") || 
             (gameBrd[2] == "X" && gameBrd[5] == "X" && gameBrd [8] == "X") || 
             (gameBrd[0] == "X" && gameBrd[4] == "X" && gameBrd [8] == "X") || 
-            (gameBrd[2] == "X" && gameBrd[4] == "X" && gameBrd [5] == "X")) {
+            (gameBrd[2] == "X" && gameBrd[4] == "X" && gameBrd [6] == "X")) {
                 playingTh = winnerLit;
                 endGame = true;
             } else { 
@@ -179,7 +178,7 @@ function playTurn() {
             (gameBrd[1] == "O" && gameBrd[4] == "O" && gameBrd [7] == "O") || 
             (gameBrd[2] == "O" && gameBrd[5] == "O" && gameBrd [8] == "O") || 
             (gameBrd[0] == "O" && gameBrd[4] == "O" && gameBrd [8] == "O") || 
-            (gameBrd[2] == "O" && gameBrd[4] == "O" && gameBrd [5] == "O")) {
+            (gameBrd[2] == "O" && gameBrd[4] == "O" && gameBrd [6] == "O")) {
                 playingTh = winnerLit;
                 endGame = true;
             } else { 
@@ -216,10 +215,11 @@ function playTurn() {
 
     if (endGame == true){ 
         $('#resultMsg').toggle();
-        $('#resultMsg').append(`<br>`);
-        $('#resultMsg').append(`<button id="playAgainBtn" class="btn btn-info btn-sm text-center">Play Again</button>`);
-        $('#resultMsg').append(`<button id="endGameBtn2" class="btn btn-warning btn-sm">End the Game</button>`);
-        $('#resultMsg').append(`<br>`);
+        // $('#resultMsg').append(`<br>`);
+        // $('#resultMsg').append(`<img src="images/trophy.jpg" alt="trophy img" width="200" />`);
+        // $('#resultMsg').append(`<button id="playAgainBtn" class="btn btn-info btn-sm text-center">Play Again</button>`);
+        // $('#resultMsg').append(`<button id="endGameBtn2" class="btn btn-warning btn-sm">End the Game</button>`);
+        // $('#resultMsg').append(`<br>`);
         if($('#th1Player').text() == "TIE") {
             $('#resultMsg').append(`<p>Game has ended in a TIE! Good Game </p>`);
         } else if ($('#th1Player').text() == winnerLit) {
