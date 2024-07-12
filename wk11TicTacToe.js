@@ -27,9 +27,10 @@ newPlayer(name, iAmX) {
 }
 }
 
-// Hides the gameboard until players are entered
+// Hides the gameboard until players are entered resultMsg until end of game
 $(document).ready(function() {
     $('#gameBoard').toggle();
+    $('#resultMsg').toggle();
 })
 
 // Declaring Global Variables
@@ -40,8 +41,10 @@ $(document).ready(function() {
     const xVal = "X";
     const oVal = "O";
     var gameBrd = [];   //Array keeps track of gameboard plays
-    const playingTh = "Make Your Choice";
-
+    var playingTh = "Make Your Choice";
+    let winnerLit = "WINNER!"
+    let tries = 0;  //count the number of tries to see if its a tie game
+    
 // Function from HTML Form with two button: one add Players and X or O; Other button ends the game
 // Players button
 $("#playersBtn").on("click", function() {
@@ -87,15 +90,36 @@ $("#playersBtn").on("click", function() {
     return                  
 })
 
-    // End the Game button on HTML form
+// End the Game button on HTML form
 $("#endGameBtn1").on("click", function() {
     $('.thanks4Play').append(`<p id="endThxP">Thanks for Playing</p>`);
     console.log("ended the game");
     return;
 })
 
+// End the Game button added on result DIV in HTML
+$("#endGameBtn2").on("click", function() {
+        $('.thanks4Play').append(`<p id="endThxP">Thanks for Playing</p>`);
+    console.log("ended the game");
+    return;
+})
 
-    // Let's Play the Game Function
+// Play again button added during end of game
+$('#playAgainBtn').on('click', function(){
+    location.reload();
+    /* $(document).ready(function() {
+        // Reset all forms on the page
+            $("form").each(function() {
+            this.reset();
+            })
+            $("table").each(function() {
+            this.reset();
+            })
+    }) */
+})
+        
+
+// Let's Play the Game Function
 function letsPlayTheGame() {
     console.log('In Playing the Game function');
     
@@ -122,22 +146,90 @@ function letsPlayTheGame() {
 
 // playTurn function
 function playTurn() {
-    console.log('REMINDER: Add playTurn function code ');
+    console.log('playTurn function code. Testing try ' + tries);
     console.log(whoseTurn);
+    let endGame = false;
 
 //  Add game checking here
+// winning array combos:
+/*  012, 345, 678 rows
+    036, 147, 258 cols
+    048, 246      diag 
+       
+    if winner then set playingTh to "Winner*/
 
-// end of turn set for next player
-    if (whoseTurn == '1') {
-        whoseTurn = '2';
-        $('#th1Player').text("");
-        $('#th2Player').text(playingTh);
+    if(whoseTurn == whoX) {
+        if((gameBrd[0] == "X" && gameBrd[1] == "X" && gameBrd [2] == "X") ||
+            (gameBrd[3] == "X" && gameBrd[4] == "X" && gameBrd [5] == "X") || 
+            (gameBrd[6] == "X" && gameBrd[7] == "X" && gameBrd [8] == "X") || 
+            (gameBrd[0] == "X" && gameBrd[3] == "X" && gameBrd [6] == "X") || 
+            (gameBrd[1] == "X" && gameBrd[4] == "X" && gameBrd [7] == "X") || 
+            (gameBrd[2] == "X" && gameBrd[5] == "X" && gameBrd [8] == "X") || 
+            (gameBrd[0] == "X" && gameBrd[4] == "X" && gameBrd [8] == "X") || 
+            (gameBrd[2] == "X" && gameBrd[4] == "X" && gameBrd [5] == "X")) {
+                playingTh = winnerLit;
+                endGame = true;
+            } else { 
+                console.log('No X winner' + whoseTurn + 'x is ' + whoX)}
     } else {
-        whoseTurn = '1';
-        $('#th1Player').text(playingTh);
-        $('#th2Player').text("");
+        if((gameBrd[0] == "O" && gameBrd[1] == "O" && gameBrd [2] == "O") ||
+            (gameBrd[3] == "O" && gameBrd[4] == "O" && gameBrd [5] == "O") || 
+            (gameBrd[6] == "O" && gameBrd[7] == "O" && gameBrd [8] == "O") || 
+            (gameBrd[0] == "O" && gameBrd[3] == "O" && gameBrd [6] == "O") || 
+            (gameBrd[1] == "O" && gameBrd[4] == "O" && gameBrd [7] == "O") || 
+            (gameBrd[2] == "O" && gameBrd[5] == "O" && gameBrd [8] == "O") || 
+            (gameBrd[0] == "O" && gameBrd[4] == "O" && gameBrd [8] == "O") || 
+            (gameBrd[2] == "O" && gameBrd[4] == "O" && gameBrd [5] == "O")) {
+                playingTh = winnerLit;
+                endGame = true;
+            } else { 
+                console.log('No O winner' + whoseTurn + 'x is ' + whoX)}
     }
-    console.log(p1, p2, whoX, whoseTurn);
+    
+    if (playingTh == winnerLit) {
+        if(whoseTurn == '1') {
+            $('#th1Player').text(winnerLit);
+        } else {
+            $('#th2Player').text(winnerLit);
+        }
+    }
+
+    if (tries == '8' && playingTh != winnerLit) {
+            $('#th1Player').text('TIE');
+            $('#th2Player').text('TIE');
+            endGame = true; 
+    }
+
+    if (playingTh != winnerLit && tries < '8') {
+        tries += 1;
+            // end of turn set for next player skip this if there is a Winner
+        if (whoseTurn == '1') {
+                 whoseTurn = '2';
+                $('#th1Player').text("");
+                $('#th2Player').text(playingTh);
+        } else {
+                whoseTurn = '1';
+                $('#th1Player').text(playingTh);
+                $('#th2Player').text("");
+            }
+    }
+
+    if (endGame == true){ 
+        $('#resultMsg').toggle();
+        $('#resultMsg').append(`<br>`);
+        $('#resultMsg').append(`<button id="playAgainBtn" class="btn btn-info btn-sm text-center">Play Again</button>`);
+        $('#resultMsg').append(`<button id="endGameBtn2" class="btn btn-warning btn-sm">End the Game</button>`);
+        $('#resultMsg').append(`<br>`);
+        if($('#th1Player').text() == "TIE") {
+            $('#resultMsg').append(`<p>Game has ended in a TIE! Good Game </p>`);
+        } else if ($('#th1Player').text() == winnerLit) {
+            $('#resultMsg').append(`<p>We have a WINNER --- Congratulations ${p1}`);
+        } else {
+            $('#resultMsg').append(`<p>We have a WINNER --- Congratulations ${p2}`);
+        }
+     } 
+    
+    console.log(p1, p2, whoX, whoseTurn, tries);
 }
 
 // Next 9 functions used to select the square chosen by player

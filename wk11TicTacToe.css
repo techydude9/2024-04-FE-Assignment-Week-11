@@ -29,3 +29,12 @@ td {
     height: 250px;
     width: 250px;
 }
+
+#resultMsg {
+    font-weight: bold;
+    text-align: center;
+    font-size: xx-large;
+    border-style: double;
+    border-color: darkgreen;
+    background-color: bisque;
+}
