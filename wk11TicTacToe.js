@@ -92,6 +92,7 @@ $("#playersBtn").on("click", function() {
 
 // End the Game button on HTML form
 $("#endGameBtn1").on("click", function() {
+    $('#resultMsg').toggle();
     $('.thanks4Play').append(`<p id="endThxP">Thanks for Playing</p>`);
     console.log("ended the game");
     return;
